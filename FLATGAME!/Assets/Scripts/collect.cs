@@ -27,7 +27,14 @@ public class collect : MonoBehaviour
                     {
                         childSpriteRenderer.enabled = false;
                     }
-            }
+                }
+            //set sound vol to 0 when clip is done so it repeat on collision
+            Invoke("StopSound", gong.clip.length);
         }
     }
+    void StopSound()
+    {
+        gong.volume = 0f;
+    }
 }
+

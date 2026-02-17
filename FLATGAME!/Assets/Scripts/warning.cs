@@ -4,13 +4,12 @@ public class warning : MonoBehaviour
 {
     AudioSource warn;
     public AudioSource gong;
-    //public Animator flash;
     public GameObject player;
     public GameObject txt;
+    public float posX;
 
     void Start()
     {
-       // flash.enabled = false;
         warn = GetComponent<AudioSource>();
     }
 
@@ -21,12 +20,13 @@ public class warning : MonoBehaviour
             gong.Play();
             warn.Play();
             txt.SetActive(true);
-            // flash.enabled = true;
-            collision.gameObject.transform.position = new Vector3(0, -8, 0);
+            collision.gameObject.transform.position = new Vector3(posX, -8, 0);
         }
         else if (collision.gameObject.CompareTag("Player") && txt.activeSelf) // if player enters again, reset position
         {
-            collision.gameObject.transform.position = new Vector3(0, -8, 0);
+            gong.Play();
+            warn.Play();
+            collision.gameObject.transform.position = new Vector3(posX, -8, 0);
         }
     }
 }

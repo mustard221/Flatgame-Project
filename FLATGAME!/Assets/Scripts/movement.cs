@@ -3,6 +3,7 @@ using UnityEngine;
 public class movement : MonoBehaviour
 {
     public AudioSource sound;
+
     void Start()
     {
         float hInput = Input.GetAxis("Horizontal"); // get player input
