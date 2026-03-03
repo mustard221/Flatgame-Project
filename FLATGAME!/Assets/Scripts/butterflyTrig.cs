@@ -3,6 +3,7 @@ using UnityEngine;
 public class butterflyTrig : MonoBehaviour
 {
     public GameObject butterfly;
+    private butterflyMove butterflyScript;
     AudioSource wings;
     AudioSource flight;
 
@@ -10,6 +11,8 @@ public class butterflyTrig : MonoBehaviour
     {
         flight = butterfly.GetComponent<AudioSource>();
         wings = GetComponent<AudioSource>();
+        butterflyMove butterflyScript = butterfly.GetComponent<butterflyMove>();
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -22,5 +25,11 @@ public class butterflyTrig : MonoBehaviour
             flight.Play();
             wings.Play();
         }
+
+        // if player collides again, sound shouldn't play again and butterfly doesn't need to trigger
+            if (collision.gameObject.tag == "Player" && butterflyScript.isMoving == true)
+            {
+                return;
+            }
     }
 }
